@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - Notifications</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="Settings3.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2>Qure</h2>
+        </div>
+        <div class="sidebar-link">
+          <ul>
+            <li>
+              <a class="icon inactive" href="hospital-dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="queue.html">
+                <span class="material-symbols-outlined">group_add</span>
+                Queues
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="wait-management.html">
+                <span class="material-symbols-outlined">switch_account</span>
+                Waiting Area
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="appointments.html">
+                <span class="material-symbols-outlined">stacked_inbox</span>
+                Appointments
+              </a>
+            </li>
+            <li>
+              <a class="icon active" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+              </a>
+            </li>
+          </ul>
+          <div class="log-out">
+            <span class="material-symbols-outlined"> logout </span>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <h1 class="page-title">Settings</h1>
+
+        <div class="tabs">
+          <a href="Settings.html" class="tab">Organization</a>
+          <a href="Settings1.html" class="tab">Departments</a>
+          <a href="Settings2.html" class="tab">Staff & Roles</a>
+          <a href="Settings3.html" class="tab active">Notifications</a>
+          <a href="Settings4.html" class="tab">Integration</a>
+          <a href="Settings5.html" class="tab">Security</a>
+        </div>
+
+        <div class="card">
+          <h2>Patient Channels</h2>
+          <div class="form-row">
+            <label>
+              <input type="checkbox" checked />
+              Email
+            </label>
+            <div class="email-preview">
+              Hello <span>[PatientName]</span>, this is a reminder of your
+              appointment on <span>[AppointmentDate]</span> at
+              <span>[AppointmentTime]</span> in
+              <span>[Location/Department]</span>. Please arrive 10 minutes
+              early.
+            </div>
+          </div>
+
+          <hr />
+
+          <h2>Staff Channels</h2>
+          <div class="form-row">
+            <label>
+              <input type="checkbox" checked />
+              Announcements – e.g., system updates, urgent notices
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              <input type="checkbox" checked />
+              Overcapacity Alerts – warns when queue exceeds limits
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button class="btn btn-outline">
+              <span class="material-symbols-outlined">mail</span>
+              Send Test
+            </button>
+          </div>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="footer-actions">
+          <button class="btn btn-light">Cancel</button>
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </div>
+    </div>
+    <script src="settings3.js"></script>
+  </body>
+</html>

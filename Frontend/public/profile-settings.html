@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="profile-settings.css" />
+    <title>Profile Settings - Qure Nigeria</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="page-header">
+      <div class="header-container">
+        <div class="logo-section">
+          <img
+            src="asset/image/Vector (3).png"
+            alt="Qure Logo"
+            class="logo-icon"
+          />
+          <span class="logo-text">Qure</span>
+        </div>
+
+        <nav class="navigation-menu">
+          <a href="#" class="nav-link">Home</a>
+          <a href="index.html" class="nav-link">Features</a>
+          <a href="#" class="nav-link dashboard-link">Go to Dashboard</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button" id="mobile-menu-toggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+      <div class="profile-settings-container">
+        <div class="profile-settings-card">
+          <!-- Profile Picture Section -->
+          <div class="profile-picture-section">
+            <div class="profile-picture-container">
+              <div class="profile-picture-placeholder" id="profile-picture">
+                <svg
+                  class="profile-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                    fill="#1e3a8a"
+                  />
+                  <path
+                    d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z"
+                    fill="#1e3a8a"
+                  />
+                </svg>
+              </div>
+              <img
+                class="profile-picture-image"
+                id="profile-picture-image"
+                style="display: none"
+                alt="Profile Picture"
+              />
+            </div>
+            <button class="upload-button" id="upload-button">
+              Upload/Change
+            </button>
+            <input
+              type="file"
+              id="profile-picture-input"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+
+          <!-- Profile Form -->
+          <form class="profile-form" id="profile-form">
+            <div class="form-group">
+              <label for="full-name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="full-name"
+                name="fullName"
+                class="form-input"
+                placeholder="Joan Ezekiel"
+                required
+              />
+              <span class="input-error" id="full-name-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email-address" class="form-label"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="email-address"
+                name="emailAddress"
+                class="form-input"
+                placeholder="joanezekiel@gmail.com"
+                required
+              />
+              <span class="input-error" id="email-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phone-number" class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                id="phone-number"
+                name="phoneNumber"
+                class="form-input"
+                placeholder="+234 801 456 7890"
+                required
+              />
+              <span class="input-error" id="phone-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gender" class="form-label">Gender</label>
+              <select id="gender" name="gender" class="form-select" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+              <span class="input-error" id="gender-error"></span>
+            </div>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="save-changes-button"
+                id="save-changes-btn"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="page-footer">
+      <div class="footer-container">
+        <div class="copyright-section">
+          <p class="copyright-text">
+            © 2025 Qure Nigeria. All rights reserved.
+          </p>
+        </div>
+
+        <div class="policy-links">
+          <a href="#" class="policy-link">Privacy Policy</a>
+          <a href="#" class="policy-link">Terms of Service</a>
+          <a href="#" class="policy-link">Cookie Settings</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-navigation" id="mobile-navigation">
+      <div class="mobile-nav-header">
+        <div class="mobile-logo-section">
+          <img
+            src="/asset/image/Vector (9).svg"
+            alt="Qure Logo"
+            class="mobile-logo-icon"
+          />
+          <span class="mobile-logo-text">Qure</span>
+        </div>
+        <button class="mobile-close-button" id="mobile-close-button">
+          <span class="close-icon">×</span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-menu">
+        <a href="#" class="mobile-nav-link">Home</a>
+        <a href="#" class="mobile-nav-link">Features</a>
+        <a href="#" class="mobile-nav-link">Go to Dashboard</a>
+      </nav>
+    </div>
+
+    <!-- Success Notification -->
+    <div class="notification" id="success-notification">
+      <div class="notification-content">
+        <span class="notification-icon">✓</span>
+        <span class="notification-message">Profile updated successfully!</span>
+      </div>
+    </div>
+
+    <script src="profile-settings.js"></script>
+  </body>
+</html>

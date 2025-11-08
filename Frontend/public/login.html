@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-details">
+        <h2>Login</h2>
+        <p>Please enter your login details to log in</p>
+
+        <form id="login-form">
+          <div class="lgn">
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Email or Phone number"
+            />
+
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group password-group">
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+              <img
+                class="toggle-password"
+                src="asset/image/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="visibility_off"
+              />
+            </div>
+            <span class="status"></span>
+          </div>
+
+          <div class="remember-me-password">
+            <div class="remember-me">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Keep me logged in</label>
+            </div>
+            <div class="forgot-password">
+              <a href="./forget-password.html">Forgot password?</a>
+            </div>
+          </div>
+
+          <div class="btn">
+            <button type="button" id="login-patient-btn" class="patient-btn">
+              Login as Patient
+            </button>
+            <button type="button" id="login-staff-btn" class="staff-btn">
+              Login as Staff
+            </button>
+          </div>
+        </form>
+
+        <div class="login-footer">
+          <p>
+            Don't have an account? <a href="sign-up.html">Create an account</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="illustration-part">
+        <div class="computer">
+          <img class="device" src="asset/image/Device.svg" alt="device" />
+        </div>
+
+        <div class="transparent-glass">
+          <div class="logo">
+            <img src="asset/image/Vector (2).png" alt="logo" />
+            <p>Qure</p>
+          </div>
+          <h2>Welcome back!</h2>
+        </div>
+      </div>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>

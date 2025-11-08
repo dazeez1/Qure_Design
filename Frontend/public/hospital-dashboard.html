@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="hospital-dashboard.css" />
+    <title>Hospital-Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="js/websocket-client.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2>Qure</h2>
+        </div>
+        <div class="sidebar-link">
+          <ul>
+            <li>
+              <a class="active" href="#">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="queue.html">
+                <span class="material-symbols-outlined">group_add</span>
+                Queues
+              </a>
+            </li>
+            <li>
+              <a href="wait-management.html">
+                <span class="material-symbols-outlined">switch_account</span>
+                Waiting Area
+              </a>
+            </li>
+            <li>
+              <a href="appointments.html">
+                <span class="material-symbols-outlined">stacked_inbox</span>
+                Appointments
+              </a>
+            </li>
+            <li>
+              <a href="Settings.html">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+              </a>
+            </li>
+          </ul>
+          <div class="log-out">
+            <span class="material-symbols-outlined">logout</span>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="date-search">
+          <div class="date-meter" id="dateMeter">
+            <button type="button" class="date-btn">
+              <div class="date-left">
+                <span class="material-symbols-outlined"> date_range </span>
+                <span id="current-date">April 23, 2024 - May 1</span>
+              </div>
+              <span class="material-symbols-outlined arrow">
+                arrow_drop_down
+              </span>
+            </button>
+            <div class="dropdown-menu" id="menu">
+              <div>
+                <label for="start-date">Start Date</label>
+                <input type="date" id="start-date" />
+              </div>
+              <div>
+                <label for="end-date">End Date</label>
+                <input type="date" id="end-date" />
+              </div>
+              <div class="actions">
+                <button class="btn" id="clearBtn" type="button">Clear</button>
+                <button class="btn primary" id="applyBtn" type="button">
+                  Apply
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="search-bar">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search for name or ticket"
+            />
+            <button class="search-btn">
+              <span class="material-symbols-outlined search-icon">
+                search
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="select-button">
+          <div class="hospital-department">
+            <div
+              class="hospital-name"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 12px;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                background: #fff;
+                color: #374151;
+                min-height: 40px;
+              "
+            >
+              <span class="material-symbols-outlined">local_hospital</span>
+              <strong id="hospitalNameLabel">Hospital</strong>
+            </div>
+
+            <div class="dropdown dept-dropdown">
+              <div class="dropdown-toggle dept-dropdown-toggle">
+                <button class="btn dept-btn">Select Department</button>
+                <span class="material-symbols-outlined dept-arrow arrow-icon">
+                  arrow_drop_down
+                </span>
+              </div>
+              <ul class="dropdown-content dept-dropdown-content">
+                <li>Cardiology</li>
+                <li>Neurology</li>
+                <li>Orthopedics</li>
+                <li>Pediatrics</li>
+                <li>Dermatology</li>
+                <li>Gynecology</li>
+              </ul>
+            </div>
+          </div>
+          <div class="button-part">
+            <div class="announcement">
+              <button class="announcement-btn" id="openAnnouncement">
+                Create Announcement
+              </button>
+            </div>
+            <div class="export-data">
+              <button class="export-btn" id="exportCsv">Export Data</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="average">
+          <div class="length">
+            <h3>Current Queue Length</h3>
+            <p id="queue-length">5</p>
+          </div>
+          <div class="length">
+            <h3>Avg. Wait Time</h3>
+            <p id="avg-wait">15 mins</p>
+          </div>
+          <div class="length">
+            <h3>No Shows Today</h3>
+            <p id="no-shows">1</p>
+          </div>
+          <div class="length">
+            <h3>Occupancy</h3>
+            <p id="occupancy">65%</p>
+          </div>
+        </div>
+
+        <div class="grid-conc">
+          <div class="queue">
+            <div class="queue-hd">
+              <h3>Queue</h3>
+              <div class="call-next">
+                <button class="call-button" id="callNextBtn">Call Next</button>
+              </div>
+            </div>
+            <div class="queue-table">
+              <table class="queue-list">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Ticket#</th>
+                    <th>
+                      <div class="department-dropdown dropdown">
+                        <div class="dropdown-toggle dept-dropdown-toggle">
+                          <button class="btns dept-btn">Department</button>
+                          <span
+                            class="material-symbols-outlined dept-arrow arrow-icon"
+                          >
+                            arrow_drop_down
+                          </span>
+                        </div>
+                        <ul class="dropdown-content dept-dropdown-content">
+                          <li>Cardiology</li>
+                          <li>O&G</li>
+                          <li>EM</li>
+                          <li>Pediatrics</li>
+                          <li>Pharmacy</li>
+                          <li>Radiology</li>
+                        </ul>
+                      </div>
+                    </th>
+                    <th>
+                      <div class="select-dropdown dropdown">
+                        <div class="dropdown-toggle select-dropdown-toggle">
+                          <button class="btns select-btn">Status</button>
+                          <span
+                            class="material-symbols-outlined dept-arrow arrow-icon"
+                          >
+                            arrow_drop_down
+                          </span>
+                        </div>
+                        <ul class="dropdown-content select-dropdown-content">
+                          <li>Waiting</li>
+                          <li>Called</li>
+                          <!-- <li>In Triage</li>
+                          <li>With Doc</li> -->
+                          <li>Completed</li>
+                          <li>No-show</li>
+                        </ul>
+                      </div>
+                    </th>
+                    <th>Waiting Time</th>
+                    <th>
+                      <div class="action-bt">
+                        <p>Action</p>
+                        <span class="material-symbols-outlined add"> add </span>
+                      </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Queue data will be loaded dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="operation">
+            <div class="operation-hd">
+              <h3>Operations</h3>
+            </div>
+            <div class="operation-grid">
+              <div class="operation-section" id="section-1">
+                <h4>Department Status</h4>
+                <div class="stack">
+                  <div class="status-row">
+                    <p>Surgery</p>
+                    <span class="green">Open</span>
+                  </div>
+                  <div class="status-row">
+                    <p>Cardiology</p>
+                    <span class="light-red">Closed</span>
+                  </div>
+                  <div class="status-row">
+                    <p>EM</p>
+                    <span class="amber">Paused</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="operation-section" id="section-2">
+                <div class="hd-btn">
+                  <h4>Quick Triage</h4>
+                  <button class="triage-btn">Queue</button>
+                </div>
+                <div class="stack">
+                  <div class="row">
+                    <select name="priority" id="priority">
+                      <option value="select-priority" selected>
+                        Select Priority
+                      </option>
+                      <option value="critical">Critical</option>
+                      <option value="high">High</option>
+                      <option value="normal">Normal</option>
+                    </select>
+                  </div>
+                  <input type="text" placeholder="Reason" id="medReason" />
+                </div>
+              </div>
+
+              <div class="operation-section" id="section-3">
+                <h4>QR Check-ins</h4>
+                <div class="stack">
+                  <div class="staff-row">
+                    <p>Ayo Lawal</p>
+                    <span class="time">2 :35pm </span>
+                  </div>
+                  <div class="staff-row">
+                    <p>Ben David</p>
+                    <span class="time">2:30pm</span>
+                  </div>
+                  <div class="staff-row">
+                    <p>Ana Smith</p>
+                    <span class="time">2:40pm</span>
+                  </div>
+                  <div class="staff-row">
+                    <p>Faith Ben</p>
+                    <span class="time">2:55pm</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="operation-section" id="section-4">
+                <h4>Broadcast Controls</h4>
+                <div class="stack">
+                  <div class="radio-conc">
+                    <label class="row"
+                      ><input type="radio" name="bc" checked /> Email</label
+                    >
+                  </div>
+                  <div class="radio-conc">
+                    <label class="row muted"
+                      ><input type="radio" name="bc" /> Voice</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="analytics">
+            <div class="analytics hd">
+              <h2>Analytics</h2>
+            </div>
+            <div class="charts-grid">
+              <div class="chart-card">
+                <h3>Daily Trends</h3>
+                <canvas id="dailyChart"></canvas>
+              </div>
+              <div class="chart-card">
+                <h3>Peak Hours</h3>
+                <canvas id="hoursChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="heat-map-action">
+            <div class="heat-map">
+              <h4>Department Heatmap</h4>
+              <div class="heatmap">
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq low"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq low"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq high"></div>
+                <div class="sq low"></div>
+              </div>
+              <div class="heat-btn">
+                <p>Export Reports</p>
+                <span class="material-symbols-outlined arrow-down">
+                  arrow_drop_down
+                </span>
+              </div>
+            </div>
+            <div class="action-guide">
+              <h4>Action Guide</h4>
+              <div class="action-color">
+                <div class="call-action act">
+                  <span class="material-symbols-outlined act-icon">
+                    campaign
+                  </span>
+                  <p>Call</p>
+                </div>
+                <div class="attend-action act">
+                  <span class="material-symbols-outlined act-icon">
+                    check
+                  </span>
+                  <p>Action</p>
+                </div>
+                <div class="no-show-action act">
+                  <span class="material-symbols-outlined act-icon">
+                    error
+                  </span>
+                  <p>No-Show</p>
+                </div>
+                <div class="message-action act">
+                  <span class="material-symbols-outlined act-icon"> mail </span>
+                  <p>Message</p>
+                </div>
+                <div class="room-action act">
+                  <span class="material-symbols-outlined act-icon">
+                    outpatient
+                  </span>
+                  <p>Action</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Styles -->
+    <style>
+      /* Toast Popup Styles */
+      .popup-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 16px 20px;
+        z-index: 1000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        min-width: 300px;
+        border-left: 4px solid #3b82f6;
+      }
+
+      .popup-toast.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .popup-toast-success {
+        border-left-color: #10b981;
+      }
+
+      .popup-toast-error {
+        border-left-color: #ef4444;
+      }
+
+      .popup-toast-warning {
+        border-left-color: #f59e0b;
+      }
+
+      .popup-toast-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .popup-toast-content i {
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .popup-toast-success i {
+        color: #10b981;
+      }
+
+      .popup-toast-error i {
+        color: #ef4444;
+      }
+
+      .popup-toast-warning i {
+        color: #f59e0b;
+      }
+
+      .popup-toast-content span {
+        color: #374151;
+        font-weight: 500;
+        flex: 1;
+      }
+
+      /* Action icon styles */
+      .action-cell .material-symbols-outlined {
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        font-size: 20px;
+      }
+
+      .action-cell .call-action {
+        color: #3b82f6;
+      }
+
+      .action-cell .call-action:hover {
+        background-color: #eff6ff;
+        color: #1d4ed8;
+      }
+
+      .action-cell .complete-action {
+        color: #10b981;
+      }
+
+      .action-cell .complete-action:hover {
+        background-color: #ecfdf5;
+        color: #059669;
+      }
+    </style>
+
+    <script src="hospital-dashboard.js"></script>
+  </body>
+</html>

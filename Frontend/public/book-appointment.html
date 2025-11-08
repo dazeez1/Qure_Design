@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="book-appointment.css" />
+    <title>Book Appointment - Qure Nigeria</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="page-header">
+      <div class="header-container">
+        <div class="logo-section">
+          <img
+            src="asset/image/Vector (3).png"
+            alt="Qure Logo"
+            class="logo-icon"
+          />
+          <span class="logo-text">Qure</span>
+        </div>
+
+        <nav class="navigation-menu">
+          <a href="patient-dashboard.html" class="nav-link">Home</a>
+
+          <a href="patient-dashboard.html" class="nav-link dashboard-link"
+            >Go to Dashboard</a
+          >
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button" id="mobile-menu-toggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+      <div class="booking-container">
+        <h1 class="page-title">Book Appointment</h1>
+
+        <div class="booking-form-container">
+          <!-- Left Column: Booking Form -->
+          <div class="booking-form-section">
+            <h2 class="section-title">Booking Form</h2>
+
+            <form id="booking-form" class="booking-form">
+              <div class="form-group">
+                <label for="hospital-name" class="form-label">Hospital</label>
+                <div class="select-wrapper">
+                  <select
+                    id="hospital-name"
+                    name="hospitalName"
+                    class="form-select"
+                    required
+                  >
+                    <option value="" disabled selected>Select Hospital</option>
+                  </select>
+                  <svg
+                    class="select-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="#64748b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="service-department" class="form-label"
+                  >Service/Department</label
+                >
+                <div class="select-wrapper">
+                  <select
+                    id="service-department"
+                    name="serviceDepartment"
+                    class="form-select"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Select Department
+                    </option>
+                    <option value="cardiology">Cardiology</option>
+                    <option value="dermatology">Dermatology</option>
+                    <option value="general-medicine">General Medicine</option>
+                    <option value="pediatrics">Pediatrics</option>
+                    <option value="obstetrics">Obstetrics</option>
+                    <option value="dentistry">Dentistry</option>
+                    <option value="radiology">Radiology</option>
+                    <option value="surgery">Surgery</option>
+                  </select>
+                  <svg
+                    class="select-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="#64748b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="appointment-date" class="form-label">Date</label>
+                  <input
+                    type="date"
+                    id="appointment-date"
+                    name="appointmentDate"
+                    class="form-input"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="appointment-time" class="form-label">Time</label>
+                  <input
+                    type="time"
+                    id="appointment-time"
+                    name="appointmentTime"
+                    class="form-input"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone-number" class="form-label"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone-number"
+                  name="phoneNumber"
+                  class="form-input"
+                  placeholder="Enter your Phone Number"
+                  required
+                />
+              </div>
+
+              <!-- Appointment Details Section -->
+              <div class="appointment-details">
+                <h3 class="details-title">Appointment Details</h3>
+                <div class="details-content">
+                  <div class="detail-item">
+                    <span class="detail-label">Appointment Date:</span>
+                    <span class="detail-value" id="display-date">-</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">Appointment Time:</span>
+                    <span class="detail-value" id="display-time">-</span>
+                  </div>
+                  <div class="detail-item">
+                    <span class="detail-label">SMS Notification:</span>
+                    <span class="detail-value" id="sms-notification">-</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group toggle-group">
+                <label class="toggle-label">
+                  <span>Review SMS</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="review-sms" />
+                    <span class="toggle-slider"></span>
+                  </label>
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="book-appointment-btn"
+              >
+                Book Appointment
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column: Patient Details -->
+          <div class="patient-details-section">
+            <h2 class="section-title">Patient Details</h2>
+
+            <div class="patient-info">
+              <div class="form-group">
+                <label class="form-label">Full name</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  value="RICHARD OLADIPO"
+                  readonly
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="patient-gender" class="form-label">Gender</label>
+                <div class="select-wrapper">
+                  <select
+                    id="patient-gender"
+                    name="patientGender"
+                    class="form-select"
+                    required
+                  >
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                  </select>
+                  <svg
+                    class="select-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="#64748b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="patient-dob" class="form-label"
+                  >Date Of Birth</label
+                >
+                <input
+                  type="date"
+                  id="patient-dob"
+                  name="patientDob"
+                  class="form-input"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="reason-visit" class="form-label"
+                  >Reason For Visit</label
+                >
+                <div class="select-wrapper">
+                  <select
+                    id="reason-visit"
+                    name="reasonVisit"
+                    class="form-select"
+                    required
+                  >
+                    <option value="" disabled selected>Reason For Visit</option>
+                    <option value="consultation">General Consultation</option>
+                    <option value="follow-up">Follow-up Visit</option>
+                    <option value="emergency">Emergency</option>
+                    <option value="routine-check">Routine Check-up</option>
+                    <option value="vaccination">Vaccination</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <svg
+                    class="select-arrow"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 9L12 15L18 9"
+                      stroke="#64748b"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="other-specify" class="form-label"
+                  >If Other Specify</label
+                >
+                <textarea
+                  id="other-specify"
+                  name="otherSpecify"
+                  class="form-textarea"
+                  placeholder="Please specify your reason for visit..."
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="page-footer">
+      <div class="footer-container">
+        <div class="copyright-section">
+          <p class="copyright-text">
+            © 2025 Qure Nigeria. All rights reserved.
+          </p>
+        </div>
+
+        <div class="policy-links">
+          <a href="#" class="policy-link">Privacy Policy</a>
+          <a href="#" class="policy-link">Terms of Service</a>
+          <a href="#" class="policy-link">Cookie Settings</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-navigation" id="mobile-navigation">
+      <div class="mobile-nav-header">
+        <div class="mobile-logo-section">
+          <img
+            src="../asset/image/Vector (9).svg"
+            alt="Qure Logo"
+            class="mobile-logo-icon"
+          />
+          <span class="mobile-logo-text">Qure</span>
+        </div>
+        <button class="mobile-close-button" id="mobile-close-button">
+          <span class="close-icon">×</span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-menu">
+        <a href="#" class="mobile-nav-link">Home</a>
+        <a href="#" class="mobile-nav-link">Features</a>
+        <a href="patient-dashboard.html" class="mobile-nav-link"
+          >Go to Dashboard</a
+        >
+      </nav>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Appointment Booked Successfully!</h3>
+          <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="success-icon">✓</div>
+          <p>
+            Your appointment has been confirmed. You will receive an SMS
+            confirmation shortly.
+          </p>
+          <div class="appointment-summary">
+            <div class="summary-item">
+              <span class="summary-label">Date:</span>
+              <span class="summary-value" id="modal-date">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Time:</span>
+              <span class="summary-value" id="modal-time">-</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Department:</span>
+              <span class="summary-value" id="modal-department">-</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="go-to-dashboard">
+            Go to Dashboard
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="book-appointment.js"></script>
+  </body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Settings.css" />
+    <title>Organization</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2>Qure</h2>
+        </div>
+        <div class="sidebar-link">
+          <ul>
+            <li>
+              <a class="icon inactive" href="hospital-dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="queue.html">
+                <span class="material-symbols-outlined">group_add</span>
+                Queues
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="wait-management.html">
+                <span class="material-symbols-outlined">switch_account</span>
+                Waiting Area
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="appointments.html">
+                <span class="material-symbols-outlined">stacked_inbox</span>
+                Appointments
+              </a>
+            </li>
+            <li>
+              <a class="icon active" href="#">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+              </a>
+            </li>
+          </ul>
+          <div class="log-out">
+            <span class="material-symbols-outlined">logout</span>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <h1 class="main-title">Settings</h1>
+
+        <div class="tabs">
+          <a href="Settings.html" class="tab active">Organization</a>
+          <a href="Settings1.html" class="tab">Departments</a>
+          <a href="Settings2.html" class="tab">Staff & Roles</a>
+          <a href="Settings3.html" class="tab">Notifications</a>
+          <a href="Settings4.html" class="tab">Integration</a>
+          <a href="Settings5.html" class="tab">Security</a>
+        </div>
+
+        <div class="settings-card">
+          <h2 class="section-title">Hospital Information</h2>
+
+          <form class="form">
+            <div class="form-left">
+              <label>Hospital Name *</label>
+              <input
+                type="text"
+                id="hospital-name"
+                placeholder="Enter hospital name"
+                required
+              />
+
+              <label>Address *</label>
+              <textarea
+                id="address"
+                placeholder="Enter complete hospital address"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-right">
+              <label>Time Zone *</label>
+              <select id="timezone" required>
+                <option value="">Select timezone</option>
+                <option value="Africa/Lagos">
+                  (GMT+1:00) West Africa Time (Lagos)
+                </option>
+                <option value="Africa/Cairo">
+                  (GMT+2:00) Eastern European Time (Cairo)
+                </option>
+                <option value="Africa/Johannesburg">
+                  (GMT+2:00) South Africa Standard Time
+                </option>
+                <option value="Europe/London">
+                  (GMT+0:00) Greenwich Mean Time (London)
+                </option>
+                <option value="America/New_York">
+                  (GMT-5:00) Eastern Time (New York)
+                </option>
+                <option value="America/Los_Angeles">
+                  (GMT-8:00) Pacific Time (Los Angeles)
+                </option>
+                <option value="Asia/Tokyo">
+                  (GMT+9:00) Japan Standard Time
+                </option>
+                <option value="Asia/Shanghai">
+                  (GMT+8:00) China Standard Time
+                </option>
+                <option value="Asia/Dubai">
+                  (GMT+4:00) Gulf Standard Time (Dubai)
+                </option>
+                <option value="Australia/Sydney">
+                  (GMT+10:00) Australian Eastern Time
+                </option>
+              </select>
+
+              <div class="capacity">
+                <label>Capacity Thresholds</label>
+                <div class="capacity-inputs">
+                  <div>
+                    <span>Low</span>
+                    <input type="number" value="25" />
+                  </div>
+                  <div>
+                    <span>Med</span>
+                    <input type="number" value="50" />
+                  </div>
+                  <div>
+                    <span>High</span>
+                    <input type="number" value="100" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="footer-buttons">
+          <button class="btn cancel">Cancel</button>
+          <button class="btn save">Save</button>
+        </div>
+
+        <div id="popup-save-confirm" class="popup">
+          <div class="popup-content">
+            <p>Do you want to save changes?</p>
+            <div class="popup-buttons">
+              <button id="confirm-save" class="btn save">Yes</button>
+              <button id="close-save-confirm" class="btn cancel">No</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup-save-success" class="popup">
+          <div class="popup-content">
+            <p>Changes have been saved successfully!</p>
+            <button id="close-save-success" class="btn save">OK</button>
+          </div>
+        </div>
+
+        <div id="popup-error" class="popup">
+          <div class="popup-content">
+            <p>
+              Please fill in Hospital Name, Address, and select a Time Zone.
+            </p>
+            <button id="close-error" class="btn save">OK</button>
+          </div>
+        </div>
+
+        <div id="popup-cancel" class="popup">
+          <div class="popup-content">
+            <p>Are you sure you want to cancel?</p>
+            <div class="popup-buttons">
+              <button id="confirm-cancel" class="btn save">Yes</button>
+              <button id="close-cancel" class="btn cancel">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="settings.js">
+      // const tabs = document.querySelectorAll(".tabs .tab");
+
+      // tabs.forEach((tab) => {
+      //   tab.addEventListener("click", () => {
+      //     const page = tab.dataset.page;
+
+      //     if (page) {
+      //       window.location.href = page;
+      //     }
+      //   });
+      // });
+    </script>
+  </body>
+</html>

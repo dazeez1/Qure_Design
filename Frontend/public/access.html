@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="access.css" />
+    <title>Hospital-Dashboard-Access</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="topbar">
+        <div class="menu-icon" onclick="openSideBar()">
+          <span class="material-symbols-outlined"> menu </span>
+        </div>
+        <div class="logo">
+          <img src="asset/image/Vector (3).png" alt="logo-pic" />
+          <p>Qure</p>
+        </div>
+      </div>
+
+      <div class="sidebar" id="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2>Qure</h2>
+          <span class="material-symbols-outlined" onclick="closeSideBar()">
+            close
+          </span>
+        </div>
+        <div class="sidebar-link">
+          <ul>
+            <li>
+              <a class="icon active" href="#">
+                <span class="material-symbols-outlined">dashboard</span
+                >Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="#">
+                <span class="material-symbols-outlined"> group_add </span>Queues
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="#">
+                <span class="material-symbols-outlined"> switch_account </span
+                >Waiting Area
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="#">
+                <span class="material-symbols-outlined"> stacked_inbox </span
+                >Appointments
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="#">
+                <span class="material-symbols-outlined"> location_on </span
+                >Floor Map
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="#">
+                <span class="material-symbols-outlined"> settings </span
+                >Settings
+              </a>
+            </li>
+          </ul>
+          <div class="log-out">
+            <span class="material-symbols-outlined"> logout </span>
+            <p>Logout</p>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="access">
+          <div class="access-title">
+            <h2>Hospital Staff Access</h2>
+            <p>
+              Please enter your access code to continue to the staff dashboard
+            </p>
+          </div>
+          <div class="code">
+            <label for="code-area">Access Code</label>
+            <input type="text" id="code-area" placeholder="Input Code" />
+            <p class="error-msg"></p>
+          </div>
+          <div class="btn">
+            <button type="submit" class="continue-btn">Continue</button>
+            <button type="submit" class="back-btn">Back to Home</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="access.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Settings5.css" />
+    <title>Security</title>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2 class="brand-name">Qure</h2>
+        </div>
+
+        <nav class="sidebar-link">
+          <ul>
+            <li>
+              <a href="hospital-dashboard.html"
+                ><span class="material-symbols-outlined">dashboard</span
+                >Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="queue.html"
+                ><span class="material-symbols-outlined">group_add</span
+                >Queues</a
+              >
+            </li>
+            <li>
+              <a href="wait-management.html"
+                ><span class="material-symbols-outlined">switch_account</span
+                >Waiting Area</a
+              >
+            </li>
+            <li>
+              <a href="appointments.html"
+                ><span class="material-symbols-outlined">stacked_inbox</span
+                >Appointments</a
+              >
+            </li>
+            <li>
+              <a class="active" href="#"
+                ><span class="material-symbols-outlined">settings</span
+                >Settings</a
+              >
+            </li>
+          </ul>
+
+          <div class="log-out">
+            <span class="material-symbols-outlined">logout</span>
+            <a href="login.html">Logout</a>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header>
+          <h1 class="page-title">Settings</h1>
+        </header>
+
+        <div class="tabs">
+          <a href="Settings.html" class="tab">Organization</a>
+          <a href="Settings1.html" class="tab">Departments</a>
+          <a href="Settings2.html" class="tab">Staff & Roles</a>
+          <a href="Settings3.html" class="tab">Notifications</a>
+          <a href="Settings4.html" class="tab">Integration</a>
+          <a href="Settings5.html" class="tab active">Security</a>
+        </div>
+
+        <section class="settings-card">
+          <div class="card-section">
+            <h2 class="section-title">Two-factor Authentication (2FA)</h2>
+            <div class="section-row">
+              <label class="toggle">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+              <p class="section-desc">
+                Require a second verification step for staff logins.
+              </p>
+            </div>
+            <hr />
+          </div>
+
+          <div class="card-section">
+            <h2 class="section-title">Password Policy</h2>
+            <ul class="policy-list">
+              <li>
+                <label
+                  ><input type="checkbox" checked /> Minimum length (8
+                  characters)</label
+                >
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" checked /> Require uppercase &amp;
+                  lowercase</label
+                >
+              </li>
+              <li>
+                <label><input type="checkbox" checked /> Require numbers</label>
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" checked /> Require special
+                  characters</label
+                >
+              </li>
+            </ul>
+            <hr />
+          </div>
+
+          <div class="card-section">
+            <h2 class="section-title">Audit Log</h2>
+            <div class="section-row">
+              <label class="toggle">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+              <p class="section-desc">
+                Review recent security-related actions.
+              </p>
+            </div>
+            <hr />
+          </div>
+
+          <div class="card-section">
+            <h2 class="section-title">Access Code</h2>
+            <div class="section-row">
+              <label class="toggle">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+              <p class="section-desc">
+                Require a shared access code before entering the staff dashboard
+              </p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn cancel">Cancel</button>
+            <button class="btn save">Save Changes</button>
+          </div>
+        </section>
+      </main>
+      <div id="popup-save" class="popup">
+        <div class="popup-content">
+          <p>✅ Changes have been saved successfully!</p>
+          <button id="close-save" class="btn save">OK</button>
+        </div>
+      </div>
+
+      <div id="popup-cancel" class="popup">
+        <div class="popup-content">
+          <p>⚠️ Do you want to cancel?</p>
+          <div class="popup-buttons">
+            <button id="confirm-cancel" class="btn save">Yes</button>
+            <button id="close-cancel" class="btn-light2">No</button>
+          </div>
+        </div>
+      </div>
+      <div id="popup-cancelled" class="popup">
+        <div class="popup-content">
+          <p>❌ Changes have been cancelled.</p>
+          <button id="close-cancelled" class="btn save">OK</button>
+        </div>
+      </div>
+    </div>
+    <script src="settings5.js"></script>
+  </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sign-up</title>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <div class="form-fill">
+        <h2 class="acc-text">Create your account</h2>
+        <p>Join to manage visits easily - as a patient or hospital staff.</p>
+        <div class="select-role">
+          <label>
+            <input type="radio" value="patient" name="role" checked />Continue
+            as Patient
+          </label>
+          <label>
+            <input type="radio" value="staff" name="role" />Continue as Staff
+          </label>
+        </div>
+
+        <form id="form-patient" class="patient-signup">
+          <div class="row">
+            <div class="input-group">
+              <label for="patient-firstname">First Name</label>
+              <input
+                type="text"
+                name="patient-firstname"
+                id="patient-firstname"
+                placeholder="Enter first name"
+              />
+              <span class="status"></span>
+            </div>
+
+            <div class="input-group">
+              <label for="patient-lastname">Last Name</label>
+              <input
+                type="text"
+                name="patient-lastname"
+                id="patient-lastname"
+                placeholder="Enter last name"
+              />
+              <span class="status"></span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="patient-email">Email address</label>
+            <input
+              type="email"
+              name="patient-email"
+              id="patient-email"
+              placeholder="Enter your email"
+            />
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="patient-number">Phone Number</label>
+            <input
+              type="tel"
+              name="patient-number"
+              id="patient-number"
+              placeholder="Enter your phone number"
+            />
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group password-group">
+            <label for="patient-password">Create Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="patient-password"
+                name="patient-password"
+                placeholder="Enter your password"
+              />
+              <img
+                class="toggle-password"
+                src="asset/image/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="visibility_off"
+              />
+            </div>
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group password-group">
+            <label for="patient-confirm_password"
+              >Re-enter to confirm Password</label
+            >
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="patient-confirm_password"
+                name="patient-confirm_password"
+                placeholder="Enter your password"
+              />
+              <img
+                class="toggle-password"
+                src="asset/image/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="visible-off"
+              />
+            </div>
+            <span class="status"></span>
+          </div>
+          <div class="input-group">
+            <div class="term-label">
+              <input type="checkbox" id="terms-patient" />
+              <label for="terms-patient"
+                >I agree with the <a href="#">Terms & Conditions</a></label
+              >
+            </div>
+            <span class="staus"></span>
+          </div>
+
+          <button type="submit" id="patient-submit">Sign up as patient</button>
+        </form>
+
+        <form id="form-staff" class="staff-signup">
+          <div class="row">
+            <div class="input-group">
+              <label for="staff-firstname">First Name</label>
+              <input
+                type="text"
+                name="staff-firstname"
+                id="staff-firstname"
+                placeholder="Enter first name"
+              />
+              <span class="status"></span>
+            </div>
+
+            <div class="input-group">
+              <label for="staff-lastname">Last Name</label>
+              <input
+                type="text"
+                name="staff-lastname"
+                id="staff-lastname"
+                placeholder="Enter last name"
+              />
+              <span class="status"></span>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="staff-email">Email address</label>
+            <input
+              type="email"
+              name="staff-email"
+              id="staff-email"
+              placeholder="Enter your email"
+            />
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="staff-number">Phone Number</label>
+            <input
+              type="tel"
+              name="staff-number"
+              id="staff-number"
+              placeholder="Enter your phone number"
+            />
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group">
+            <label for="hospital-name">Hospital/Clinic Name</label>
+            <input
+              type="text"
+              name="hospital"
+              id="hospital-name"
+              placeholder="Enter your hospital/clinic name"
+            />
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group password-group">
+            <label for="staff-password">Create Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="staff-password"
+                name="staff-password"
+                placeholder="Enter your password"
+              />
+              <img
+                class="toggle-password"
+                src="asset/image/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="visibility_off"
+              />
+            </div>
+            <span class="status"></span>
+          </div>
+
+          <div class="input-group password-group">
+            <label for="staff-confirm_password"
+              >Re-enter to confirm Password</label
+            >
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="staff-confirm_password"
+                name="staff-confirm_password"
+                placeholder="Enter your password"
+              />
+              <img
+                class="toggle-password"
+                src="asset/image/visibility_off_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="visible-off"
+              />
+            </div>
+            <span class="status"></span>
+          </div>
+          <div class="input-group">
+            <div class="term-label">
+              <input type="checkbox" id="terms-staff" />
+              <label for="terms-staff"
+                >I agree with the <a href="#">Terms & Conditions</a></label
+              >
+            </div>
+            <span class="status"></span>
+          </div>
+
+          <!-- <p id="message-staff"></p> -->
+          <button type="submit" id="staff-submt">Sign up as staff</button>
+        </form>
+
+        <div class="acct">
+          <p>Already have an account? <a href="login.html">Log in here</a></p>
+        </div>
+      </div>
+
+      <div class="illustration-part">
+        <div class="transparent-glass">
+          <div class="logo">
+            <img src="asset/image/Vector (2).png" alt="logo" />
+            <p>Qure</p>
+          </div>
+          <h2>Let's get started!</h2>
+        </div>
+      </div>
+    </div>
+    <script src="sign-up.js"></script>
+  </body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="appointment.css" />
+    <title>Appointment</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2>Qure</h2>
+        </div>
+        <div class="sidebar-link">
+          <ul>
+            <li>
+              <a class="icon inactive" href="hospital-dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span
+                >Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="#">
+                <span class="material-symbols-outlined"> group_add </span>Queues
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="wait-management.html">
+                <span class="material-symbols-outlined"> switch_account </span
+                >Waiting Area
+              </a>
+            </li>
+            <li>
+              <a class="icon active" href="appointments.html">
+                <span class="material-symbols-outlined"> stacked_inbox </span
+                >Appointments
+              </a>
+            </li>
+
+            <li>
+              <a class="icon inactive" href="Settings.html">
+                <span class="material-symbols-outlined"> settings </span
+                >Settings
+              </a>
+            </li>
+          </ul>
+          <div class="log-out">
+            <span class="material-symbols-outlined"> logout </span>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="btn-header">
+          <div class="header">
+            <h2>Appointments</h2>
+          </div>
+          <div class="appt-btn">
+            <p>New Appointment</p>
+          </div>
+        </div>
+
+        <div class="select-date">
+          <div class="slt-btn">
+            <button class="all-btn">All</button>
+            <button class="today-btn inactive-btn">Today</button>
+            <button class="upcoming-btn inactive-btn">Upcoming</button>
+            <button class="past-btn inactive-btn">Past</button>
+            <button class="cancelled-btn inactive-btn">Cancelled</button>
+          </div>
+          <div class="date-department">
+            <div class="date-meter" id="dateMeter">
+              <button type="button" class="date-btn">
+                <div class="date-left">
+                  <span class="material-symbols-outlined"> date_range </span>
+                  <span id="current-date">Date Range</span>
+                </div>
+                <span class="material-symbols-outlined arrow">
+                  arrow_drop_down
+                </span>
+              </button>
+              <div class="dropdown-menu" id="menu">
+                <div>
+                  <label for="startDate">Start Date</label>
+                  <input type="date" id="startDate" />
+                </div>
+                <div>
+                  <label for="endDate">End Date</label>
+                  <input type="date" id="endDate" />
+                </div>
+                <div class="actions">
+                  <button class="btn" id="clearBtn" type="button">Clear</button>
+                  <button class="btn primary" id="applyBtn" type="button">
+                    Apply
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown dept-dropdown">
+              <div class="dropdown-toggle dept-dropdown-toggle">
+                <button class="btn dept-btn">Select Department</button>
+                <span class="material-symbols-outlined dept-arrow arrow-icon">
+                  arrow_drop_down
+                </span>
+              </div>
+              <ul class="dropdown-content dept-dropdown-content">
+                <li>Cardiology</li>
+                <li>Neurology</li>
+                <li>Orthopedics</li>
+                <li>Pediatrics</li>
+                <li>Dermatology</li>
+                <li>Gynecology</li>
+              </ul>
+            </div>
+            <div class="search-bar">
+              <input
+                type="text"
+                placeholder="Search appointments..."
+                style="border: none; outline: none; padding: 8px; width: 200px"
+              />
+              <button class="src-icon">
+                <span class="material-symbols-outlined search-icon">
+                  search
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="list-profile">
+          <div class="list">
+            <div class="list-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Patient Name</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Date $ Time</th>
+                  </tr>
+                </thead>
+                <tbody id="appointmentsTableBody">
+                  <!-- Appointments will be populated dynamically from backend -->
+                </tbody>
+              </table>
+
+              <!-- Pagination -->
+              <div
+                class="pagination"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  margin: 20px auto;
+                  gap: 8px;
+                  width: 100%;
+                "
+              >
+                <!-- Pagination buttons will be populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <div class="profile" style="display: none">
+            <div class="profile-details">
+              <!-- Patient details will be populated dynamically when an appointment is selected -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="appointmentModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>New Appointment</h2>
+        <form id="appointmentForm">
+          <label>Patient Name</label>
+          <input type="text" id="patientName" required />
+
+          <label>Patient Email</label>
+          <input type="email" id="patientEmail" required />
+
+          <label>Patient Phone</label>
+          <input type="tel" id="patientPhone" required />
+
+          <label>Department</label>
+          <input type="text" id="department" required />
+
+          <label>Type</label>
+          <select id="apptType">
+            <option value="Visit">Visit</option>
+            <option value="Follow-up">Follow-up</option>
+            <option value="Consultation">Consultation</option>
+          </select>
+
+          <label>Date & Time</label>
+          <input type="datetime-local" id="apptDateTime" required />
+
+          <label>Status</label>
+          <select id="apptStatus">
+            <option value="Booked">Booked</option>
+            <option value="Checked-in">Checked-in</option>
+            <option value="Cancelled">Cancelled</option>
+            <option value="No-show">No-show</option>
+          </select>
+
+          <button type="submit" class="save-btn">Save Appointment</button>
+        </form>
+      </div>
+    </div>
+    <!-- Popup Styles -->
+    <style>
+      /* Toast Popup Styles */
+      .popup-toast {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 16px 20px;
+        z-index: 1000;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        min-width: 300px;
+        border-left: 4px solid #3b82f6;
+      }
+
+      .popup-toast.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .popup-toast-success {
+        border-left-color: #10b981;
+      }
+
+      .popup-toast-error {
+        border-left-color: #ef4444;
+      }
+
+      .popup-toast-warning {
+        border-left-color: #f59e0b;
+      }
+
+      .popup-toast-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .popup-toast-content i {
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .popup-toast-success i {
+        color: #10b981;
+      }
+
+      .popup-toast-error i {
+        color: #ef4444;
+      }
+
+      .popup-toast-warning i {
+        color: #f59e0b;
+      }
+
+      .popup-toast-content span {
+        color: #374151;
+        font-weight: 500;
+      }
+
+      /* Pagination Styles */
+      .pagination-btn {
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        background: white;
+        color: #374151;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease;
+      }
+
+      .pagination-btn:hover:not(.disabled) {
+        background: #f3f4f6;
+        border-color: #9ca3af;
+      }
+
+      .pagination-btn.active {
+        background: #3b82f6;
+        color: white;
+        border-color: #3b82f6;
+      }
+
+      .pagination-btn.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .pagination-dots {
+        padding: 8px 4px;
+        color: #6b7280;
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 8px;
+        padding: 24px;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .modal-header h3 {
+        margin: 0;
+        color: #111827;
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .form-group {
+        margin-bottom: 16px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        color: #374151;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        transition: border-color 0.2s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 24px;
+        padding-top: 16px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .btn-primary {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn-primary:hover {
+        background: #2563eb;
+      }
+
+      .btn-secondary {
+        background: #f3f4f6;
+        color: #374151;
+        border: 1px solid #d1d5db;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn-secondary:hover {
+        background: #e5e7eb;
+      }
+
+      .char-count {
+        display: block;
+        text-align: right;
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+
+      .form-group select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        font-size: 14px;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .form-group select:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .form-row .form-group {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+      }
+    </style>
+
+    <script src="appointment.js"></script>
+  </body>
+</html>

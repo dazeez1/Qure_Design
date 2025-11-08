@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd Frontend/public && ls",
+  "outputDirectory": "Frontend/public",
+  "installCommand": "echo 'No dependencies to install'"
+}

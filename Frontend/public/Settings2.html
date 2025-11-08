@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Settings2.css" />
+    <title>Department - Settings</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="logo">
+          <img src="./asset/image/Vector (2).png" alt="logo" />
+          <h2>Qure</h2>
+        </div>
+        <div class="sidebar-link">
+          <ul>
+            <li>
+              <a class="icon inactive" href="hospital-dashboard.html">
+                <span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="queue.html">
+                <span class="material-symbols-outlined"> group_add </span>
+                Queues
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="wait-management.html">
+                <span class="material-symbols-outlined"> switch_account </span>
+                Waiting Area
+              </a>
+            </li>
+            <li>
+              <a class="icon inactive" href="appointments.html">
+                <span class="material-symbols-outlined"> stacked_inbox </span>
+                Appointments
+              </a>
+            </li>
+            <li>
+              <a class="icon active" href="#">
+                <span class="material-symbols-outlined"> settings </span>
+                Settings
+              </a>
+            </li>
+          </ul>
+          <div class="log-out">
+            <span class="material-symbols-outlined"> logout </span>
+            <a href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <main class="main">
+        <h1 class="page-title">Settings</h1>
+
+        <div class="tabs">
+          <a href="Settings.html" class="tab">Organization</a>
+          <a href="Settings1.html" class="tab">Departments</a>
+          <a href="Settings2.html" class="tab active">Staff & Roles</a>
+          <a href="Settings3.html" class="tab">Notifications</a>
+          <a href="Settings4.html" class="tab">Integration</a>
+          <a href="Settings5.html" class="tab">Security</a>
+        </div>
+
+        <section class="staff-section">
+          <div class="table-box">
+            <table class="staff-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Staff data will be loaded dynamically from API -->
+              </tbody>
+            </table>
+            <button class="invite-btn">+ Invite Staff</button>
+          </div>
+        </section>
+
+        <!-- Role Permissions -->
+        <section class="role-section">
+          <h2>Role Permissions</h2>
+          <table class="permissions-table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>View</th>
+                <th>Add</th>
+                <th>Edit</th>
+                <th>Delete</th>
+                <th>Manage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Admin</td>
+                <td><input type="checkbox" checked /></td>
+                <td><input type="checkbox" checked /></td>
+                <td><input type="checkbox" checked /></td>
+                <td><input type="checkbox" checked /></td>
+                <td><input type="checkbox" checked /></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script src="settings2.js"></script>
+  </body>
+</html>

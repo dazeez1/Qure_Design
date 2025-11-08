@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="patient-dashboard.css" />
+    <title>Patient Dashboard - Qure Nigeria</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="page-header">
+      <div class="header-container">
+        <div class="logo-section">
+          <img
+            src="asset/image/Vector (9).svg"
+            alt="Qure Logo"
+            class="logo-icon"
+          />
+          <span class="logo-text">Qure</span>
+        </div>
+
+        <nav class="navigation-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="feedback-ratings.html" class="nav-link">Feedback</a>
+          <a href="book-appointment.html" class="nav-link">My Bookings</a>
+          <a href="real-time-queue-tracking.html" class="nav-link"
+            >Queue Status</a
+          >
+          <a href="contact-us.html" class="nav-link">Contact Us</a>
+        </nav>
+
+        <div class="user-profile">
+          <div class="user-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                fill="#1e3a8a"
+              />
+              <path
+                d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z"
+                fill="#1e3a8a"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-button" id="mobile-menu-toggle">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+      <div class="dashboard-container">
+        <!-- Left Section -->
+        <div class="dashboard-main">
+          <h1 class="greeting">Hi, Joan</h1>
+
+          <!-- Queue Status Card -->
+          <div class="queue-status-card">
+            <h3 class="queue-title">You are in a queue</h3>
+            <div class="queue-info">
+              <span class="queue-number">C-012</span>
+              <span class="queue-eta">ETA: 4 mins</span>
+            </div>
+            <div class="queue-actions">
+              <button class="btn btn-primary" id="view-queue-btn">
+                VIEW QUEUE
+              </button>
+              <button class="btn btn-secondary" id="cancel-queue-btn">
+                CANCEL
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button class="action-btn" id="join-queue-btn">
+              <svg
+                class="action-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                />
+                <path
+                  d="M12 14C7.58172 14 4 17.5817 4 22H20C20 17.5817 16.4183 14 12 14Z"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                />
+              </svg>
+              Join Live Queue
+            </button>
+            <button class="action-btn" id="book-appointment-btn">
+              <svg
+                class="action-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="3"
+                  y="4"
+                  width="18"
+                  height="18"
+                  rx="2"
+                  ry="2"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                />
+                <line
+                  x1="16"
+                  y1="2"
+                  x2="16"
+                  y2="6"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                />
+                <line
+                  x1="8"
+                  y1="2"
+                  x2="8"
+                  y2="6"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                />
+                <line
+                  x1="3"
+                  y1="10"
+                  x2="21"
+                  y2="10"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                />
+              </svg>
+              Book Appointment
+            </button>
+          </div>
+
+          <!-- Upcoming Appointments Section -->
+          <section class="appointments-section">
+            <h2 class="section-title">Upcoming Appointments</h2>
+            <div class="appointments-list">
+              <div class="appointment-card">
+                <div class="appointment-info">
+                  <div class="appointment-left">
+                    <span class="appointment-date">June 14, 2025</span>
+                    <span class="appointment-doctor">Dr. Martins</span>
+                  </div>
+                  <div class="appointment-right">
+                    <span class="appointment-time">9:00 AM</span>
+                    <span class="appointment-specialty">Cardiology</span>
+                  </div>
+                </div>
+                <div class="appointment-actions">
+                  <button class="action-link reschedule">Reschedule</button>
+                  <button class="action-link cancel">Cancel</button>
+                </div>
+              </div>
+
+              <div class="appointment-card">
+                <div class="appointment-info">
+                  <div class="appointment-left">
+                    <span class="appointment-date">June 25, 2025</span>
+                    <span class="appointment-doctor">Dr. Samantha</span>
+                  </div>
+                  <div class="appointment-right">
+                    <span class="appointment-time">2:00 PM</span>
+                    <span class="appointment-specialty">Dentist</span>
+                  </div>
+                </div>
+                <div class="appointment-actions">
+                  <button class="action-link reschedule">Reschedule</button>
+                  <button class="action-link cancel">Cancel</button>
+                </div>
+              </div>
+
+              <div class="appointment-card">
+                <div class="appointment-info">
+                  <div class="appointment-left">
+                    <span class="appointment-date">July 9, 2025</span>
+                    <span class="appointment-doctor">Dr. Anna</span>
+                  </div>
+                  <div class="appointment-right">
+                    <span class="appointment-time">3:00 PM</span>
+                    <span class="appointment-specialty">Obstetrics</span>
+                  </div>
+                </div>
+                <div class="appointment-actions">
+                  <button class="action-link reschedule">Reschedule</button>
+                  <button class="action-link cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="dashboard-sidebar">
+          <!-- Notifications Card -->
+          <div class="sidebar-card">
+            <div class="card-header">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M13.73 21a2 2 0 0 1-3.46 0"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3 class="card-title">Notifications</h3>
+              <div class="notification-actions">
+                <button
+                  class="notification-action-btn"
+                  id="create-sample-notifications-btn"
+                  title="Create sample notifications (for testing)"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M12 5v14"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M5 12h14"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="notification-action-btn"
+                  id="mark-all-read-btn"
+                  title="Mark all as read"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9 12l2 2 4-4"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  class="notification-action-btn"
+                  id="refresh-notifications-btn"
+                  title="Refresh"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 4v6h6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M23 20v-6h-6"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-content">
+              <div
+                class="notification-loading"
+                id="notification-loading"
+                style="display: none"
+              >
+                <div class="loading-spinner"></div>
+                <span>Loading notifications...</span>
+              </div>
+              <div
+                class="notification-empty"
+                id="notification-empty"
+                style="display: none"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                    stroke="#9ca3af"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M13.73 21a2 2 0 0 1-3.46 0"
+                    stroke="#9ca3af"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <p>No notifications yet</p>
+              </div>
+              <div class="notifications-list" id="notifications-list">
+                <!-- Dynamic notifications will be loaded here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- SMS Queue Card -->
+          <div class="sidebar-card">
+            <div class="card-header">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3 class="card-title">How to join queue via SMS</h3>
+            </div>
+            <div class="card-content">
+              <p class="sms-instruction">Text "JOIN 3001" to 50050</p>
+            </div>
+          </div>
+
+          <!-- Feedback Card -->
+          <div class="sidebar-card">
+            <div class="card-header">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M13 8H7"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M17 12H7"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3 class="card-title">Have Feedback?</h3>
+            </div>
+            <div class="card-content">
+              <a href="#" class="feedback-link">Let us know</a>
+            </div>
+          </div>
+
+          <!-- Notification Preferences Card -->
+          <div class="sidebar-card">
+            <div class="card-header">
+              <svg
+                class="card-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 4V10H7"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M23 20V14H17"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20.49 9C19.2214 7.33125 17.2013 6.25 15 6.25C10.4437 6.25 6.75 9.94365 6.75 14.5C6.75 19.0563 10.4437 22.75 15 22.75C18.6625 22.75 21.75 20.5 22.75 17.5"
+                  stroke="#1e3a8a"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3 class="card-title">How should we notify you?</h3>
+            </div>
+            <div class="card-content">
+              <div class="notification-option">
+                <span>SMS</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+              <div class="notification-option">
+                <span>Email</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="page-footer">
+      <div class="footer-container">
+        <div class="copyright-section">
+          <p class="copyright-text">
+            © 2025 Qure Nigeria. All rights reserved.
+          </p>
+        </div>
+
+        <div class="policy-links">
+          <a href="#" class="policy-link">Privacy Policy</a>
+          <a href="#" class="policy-link">Terms of Service</a>
+          <a href="#" class="policy-link">Cookie Settings</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Navigation Menu -->
+    <div class="mobile-navigation" id="mobile-navigation">
+      <div class="mobile-nav-header">
+        <div class="mobile-logo-section">
+          <img
+            src="../asset/image/Vector (9).svg"
+            alt="Qure Logo"
+            class="mobile-logo-icon"
+          />
+          <span class="mobile-logo-text">Qure</span>
+        </div>
+        <button class="mobile-close-button" id="mobile-close-button">
+          <span class="close-icon">×</span>
+        </button>
+      </div>
+
+      <nav class="mobile-nav-menu">
+        <a href="index.html" class="mobile-nav-link">Home</a>
+        <a href="feedback-ratings.html" class="mobile-nav-link">Feedback</a>
+        <a href="book-appointment.html" class="mobile-nav-link">My Bookings</a>
+        <a href="queue-status.html" class="mobile-nav-link">Queue Status</a>
+        <a href="contact-us.html" class="mobile-nav-link">Contact Us</a>
+      </nav>
+    </div>
+
+    <script src="patient-dashboard.js"></script>
+  </body>
+</html>
